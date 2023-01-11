@@ -1,0 +1,48 @@
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title align="center">Send a message</h2>
+  <mat-dialog-content class="mat-typography" align="center">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        id="userName"
+        name="userName"
+        formControlName="userName"
+      />
+      <mat-error *ngIf="messageForm.get('userName')?.errors?.['required']">
+        Name is required
+      </mat-error>
+      <mat-error *ngIf="messageForm.get('userName')?.errors?.['maxlength']">
+        Name should not contain more than 20 characters
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <mat-form-field id="custom-height" appearance="fill">
+      <mat-label>Message</mat-label>
+      <textarea matInput formControlName="userMessage"></textarea>
+      <mat-error *ngIf="messageForm.get('userMessage')?.errors?.['required']">
+        Message is required
+      </mat-error>
+      <mat-error *ngIf="messageForm.get('userMessage')?.errors?.['minlength']">
+        Message should not be less than 100 characters
+      </mat-error>
+      <mat-error *ngIf="messageForm.get('userMessage')?.errors?.['maxlength']">
+        Message should not contain more than 100 characters
+      </mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+  <br />
+  <mat-dialog-actions align="center">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      type="submit"
+      [disabled]="messageForm.invalid"
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+    >
+      Submit
+    </button>
+  </mat-dialog-actions>
+</form>
