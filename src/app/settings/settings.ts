@@ -2,7 +2,7 @@ import { environment } from 'src/environments/environment';
 
 export const APP_SETTINGS = {
   DIALOG_WIDTH: '30%',
-  DOCUMENT_TITLE: "messages"
+  DOCUMENT_TITLE: 'messages',
 };
 
 export const FIRE_BASE_SETTINGS = {

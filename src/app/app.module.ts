@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { MessageReducer } from './state-management/store/reducers/message.reducer';
 
 // importing material modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -36,6 +38,9 @@ import { FIRE_BASE_SETTINGS } from './settings/settings';
       measurementId: FIRE_BASE_SETTINGS.MEASUREMENT_ID,
     }),
     AngularFirestoreModule,
+    StoreModule.forRoot({
+      message: MessageReducer,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

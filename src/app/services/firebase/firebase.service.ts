@@ -12,7 +12,7 @@ export class FireBaseService {
 
   /**
    * Add user message to firebase
-   * @param payload
+   * @param {IMessage} payload
    * @return {}
    */
   addMessage(payload: IMessage) {
