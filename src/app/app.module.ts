@@ -18,7 +18,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { APP_ROUTES } from './routes/routes';
 import { HomeComponent } from './pages/home/home.component';
-import { FIRE_BASE_SETTINGS } from './settings/settings';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HomeComponent],
@@ -29,13 +29,7 @@ import { FIRE_BASE_SETTINGS } from './settings/settings';
     MatToolbarModule,
     MatButtonModule,
     AngularFireModule.initializeApp({
-      apiKey: FIRE_BASE_SETTINGS.API_KEY,
-      authDomain: FIRE_BASE_SETTINGS.AUTH_DOMAIN,
-      projectId: FIRE_BASE_SETTINGS.PROJECT_ID,
-      storageBucket: FIRE_BASE_SETTINGS.STORAGE_BUCKET,
-      messagingSenderId: FIRE_BASE_SETTINGS.MESSAGE_SENDER_ID,
-      appId: FIRE_BASE_SETTINGS.APP_ID,
-      measurementId: FIRE_BASE_SETTINGS.MEASUREMENT_ID,
+      ...environment,
     }),
     AngularFirestoreModule,
     StoreModule.forRoot({

@@ -1,10 +1,9 @@
-import { IMessage } from 'src/app/models/message.model';
 import { INITIAL_STATE } from 'src/app/common/common';
 import { MessageAction } from '../actions/message.action';
 import { MESSAGE_ACTION_TYPES } from 'src/app/enums/actions.enum';
 
 export const MessageReducer = (
-  state: IMessage[] = INITIAL_STATE,
+  state = INITIAL_STATE,
   action: MessageAction
 ) => {
   switch (action.type) {

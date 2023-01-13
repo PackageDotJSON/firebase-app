@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IMessage } from 'src/app/models/message.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
 import { APP_SETTINGS } from 'src/app/settings/settings';
 
 @Injectable({
