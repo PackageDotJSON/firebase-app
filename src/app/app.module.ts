@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, StoreModule } from '@ngrx/store';
 import { MessageReducer } from './state-management/store/reducers/message.reducer';
 
 // importing material modules
@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { APP_ROUTES } from './routes/routes';
 import { HomeComponent } from './pages/home/home.component';
 import { environment } from 'src/environments/environment';
+import { IMessage } from './models/message.model';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HomeComponent],
@@ -33,7 +34,7 @@ import { environment } from 'src/environments/environment';
     }),
     AngularFirestoreModule,
     StoreModule.forRoot({
-      message: MessageReducer,
+      message: MessageReducer as ActionReducer<IMessage[]>,
     }),
   ],
   providers: [],

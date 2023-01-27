@@ -7,5 +7,3 @@ export class AddMessageAction implements Action {
 
   constructor(public payload: IMessage) {}
 }
-
-export type MessageAction = AddMessageAction;

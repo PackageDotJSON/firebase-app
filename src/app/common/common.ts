@@ -1,6 +1,6 @@
 export const INITIAL_STATE = [
   {
-    userName: '',
-    userMessage: '',
+    userName: 'Test',
+    userMessage: 'This is a test message',
   },
 ];

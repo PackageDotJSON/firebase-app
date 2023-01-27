@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FireBaseService } from 'src/app/services/firebase/firebase.service';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { IMessage } from 'src/app/models/message.model';
 import { IAppState } from 'src/app/models/app-state.model';
+import { FireBaseService } from 'src/app/services/firebase/firebase.service';
+import { AddMessageAction } from 'src/app/state-management/store/actions/message.action';
 
 @Component({
   selector: 'app-message-form',
@@ -13,7 +12,6 @@ import { IAppState } from 'src/app/models/app-state.model';
 })
 export class MessageFormComponent implements OnInit {
   messageForm!: FormGroup;
-  message$!: Observable<IMessage[]>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,7 +22,6 @@ export class MessageFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-    this.store.select(store => store.appState).subscribe(res => console.log(res));
   }
 
   /**
@@ -45,6 +42,7 @@ export class MessageFormComponent implements OnInit {
       ],
     });
   }
+  
 
   /**
    * Dispatches the form data to the reducer
@@ -52,6 +50,7 @@ export class MessageFormComponent implements OnInit {
    * @return {}
    */
   onSubmit() {
+   this.store.dispatch(new AddMessageAction(this.messageForm.value));
    this.fireBaseService.addMessage(this.messageForm.value);
   }
 }
