@@ -1,4 +1,4 @@
 export const enum ROUTES {
-  HOME_ROUTE = '/home',
+  HOME_ROUTE = '/',
   MESSAGE_ROUTE = '/messages',
 }
